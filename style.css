@@ -90,20 +90,10 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 30px;
-    margin: 0 auto;
 }
 .radial-bar__icon i.fa {
     font-size: 1.3rem;
     color: #fff;
-}
-
-/* Icon positioning in radial bar wrappers */
-.radial-bar-container > .radial-bar__icon {
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    bottom: -10px;
 }
 .radial-bar__icon--signal {
     background: transparent;
@@ -112,8 +102,20 @@ body {
     color:  lightblue;
 }
 
+/* Icon positioning in radial bar wrappers */
+.radial-bar-container > .radial-bar__icon {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    margin: 0 auto;
+}
+
 /* Animated radial bar widgets */
 .radial-bar {
+    position: relative;
+    z-index: 1;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -232,11 +234,11 @@ body {
     left: 50%;
     transform: translateX(-50%);
     right: 0;
-    bottom: -245px;
+    bottom: -240px;
     width: 215px;
     min-height: 100px;
     text-align: center;
-    z-index: 1000;
+    z-index: 3;
     box-shadow: 10px 10px 43px -19px rgba(0,0,0,0.29);
 }
 .tooltip .tooltip__header,
@@ -288,9 +290,8 @@ body {
 
 /* A basic implementaion of toggle on hover for tooltips */
 .tooltip {
-    /*display: none;*/
+    display: none;
 }
-
 .radial-bar:hover ~ .tooltip {
     display: block;
 }
@@ -306,7 +307,7 @@ body {
         margin-bottom: 30px;
     }
     .tooltip {
-        bottom: -200px;
+        bottom: -210px;
     }
     .radial-bar-container > .radial-bar__icon {
         bottom: 22px;
