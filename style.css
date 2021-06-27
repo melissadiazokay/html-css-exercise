@@ -1,0 +1,314 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica;
+    font-size: 14px;
+}
+
+body {
+    background: #f2f2f2;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+/* A basic container class for the sake of adding gutters */
+.container {
+    padding: 0 3vw;
+    margin-bottom: 80px;
+}
+
+/* Button style */
+.btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size:  0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-style: none;
+    color: #f7f7f7f7;
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, #5353ff, #b909b9); 
+    min-width: 120px;
+    padding: 23px 30px 20px;
+    border-radius: 30px;
+    box-shadow: 10px 10px 30px -14px rgba(0,0,0,0.63);
+    transition: all 0.4s;
+    cursor: pointer;
+}
+.btn:hover {
+    background-position: right center; 
+    transform: scale(1.003); /* very subtle scale effect gives extra engagement to active state */
+    box-shadow: 10px 10px 30px -12px rgba(0,0,0,0.63);
+}
+
+/* Images statically indicated by targeting child elements */
+.radial-bars-widget__wrapper > div:nth-child(1) .inside-circle {
+    background-image: url('./img/jane.jpg');
+}
+.radial-bars-widget__wrapper > div:nth-child(2) .inside-circle {
+    background-image: url('./img/ashley.jpg');
+}
+.radial-bars-widget__wrapper > div:nth-child(3) .inside-circle {
+    background-image: url('./img/ben.jpg');
+}
+.radial-bars-widget__wrapper > div:nth-child(4) .inside-circle {
+    background-image: url('./img/melissa.jpg');
+}
+
+/* radial bar widget wrapper */
+.radial-bars-widget {
+    background-color: #fff;
+    padding: 50px 40px;
+    border: 1px solid #ececec;
+    border-radius: 25px;
+    margin-top: 60px;
+    box-shadow: 10px 10px 43px -19px rgba(0,0,0,0.29);
+}
+.radial-bars-widget .radial-bars-widget__title {
+    font-size: 1.5rem;
+    text-align: center;
+    color:  #444;
+    margin: 0;
+    margin-bottom: 45px;
+}
+.radial-bars-widget .btn {
+    margin: 0 auto;
+    margin-top: 45px;
+    display: block;
+}
+.radial-bar-container {
+    position: relative;
+}
+
+/* Icon style  */
+.radial-bar__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    margin: 0 auto;
+}
+.radial-bar__icon i.fa {
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+/* Icon positioning in radial bar wrappers */
+.radial-bar-container > .radial-bar__icon {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    bottom: -10px;
+}
+.radial-bar__icon--signal {
+    background: transparent;
+}
+.radial-bar__icon--signal i.fa {
+    color:  lightblue;
+}
+
+/* Animated radial bar widgets */
+.radial-bar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 1vw;
+    cursor: pointer;
+}
+.radial-bar.radial-bar--positive,
+.radial-bar__icon--positive {
+    background: #3edd3e;
+}
+.radial-bar.radial-bar--negative,
+.radial-bar__icon--negative  {
+    background: #f9673a;
+}
+.radial-bar .radial-bar__circle .radial-bar__mask,
+.radial-bar .radial-bar__circle .fill {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 50%;
+}
+.radial-bar .radial-bar__circle .fill {
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+.radial-bar .radial-bar__circle .radial-bar__mask {
+    clip: rect(0px, 150px, 150px, 75px);
+}
+.radial-bar .radial-bar__circle .radial-bar__mask .fill {
+    clip: rect(0px, 75px, 150px, 0px);
+    background-color: #e6e2e7;
+}
+.radial-bar .inside-circle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    line-height: 130px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: absolute;
+    z-index: 100;
+}
+
+/* static animations for common radial bar values (25%, 33%, 50%, 75%, 100%) */
+.radial-bar.radial-bar--25 .radial-bar__circle .fill {
+    animation-name: fill-25;
+    transform: rotate(-135deg);
+}
+.radial-bar.radial-bar--33 .radial-bar__circle .fill {
+    animation-name: fill-33;
+    transform: rotate(-120deg);
+}
+.radial-bar.radial-bar--50 .radial-bar__circle .fill {
+    animation-name: fill-50;
+    transform: rotate(-90deg);
+}
+.radial-bar.radial-bar--75 .radial-bar__circle .fill {
+    animation-name: fill-75;
+    transform: rotate(-45deg);
+}
+.radial-bar.radial-bar--100 .radial-bar__circle .fill {
+    animation-name: fill-100;
+    transform: rotate(0deg);
+}
+@keyframes fill-25 {
+  0% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(-135deg);
+  }
+}
+@keyframes fill-33 {
+  0% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(-120deg);
+  }
+}
+@keyframes fill-50 {
+  0% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+@keyframes fill-75 {
+  0% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+@keyframes fill-100 {
+  0% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+/* Tooltips */
+.tooltip {
+    position: absolute;
+    margin: 0 auto;
+    border-radius: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: 0;
+    bottom: -245px;
+    width: 215px;
+    min-height: 100px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 10px 10px 43px -19px rgba(0,0,0,0.29);
+}
+.tooltip .tooltip__header,
+.tooltip .tooltip__body {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.tooltip .tooltip__header {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 1px solid #ececec;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    background-color: #555;
+    font-weight: 600;
+    color: #a5d2f2;
+}
+.tooltip .tooltip__body {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-top: 20px;
+    padding-bottom: 25px;
+    color: #555;
+    background: #fff;
+}
+.tooltip .tooltip__body table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.tooltip .tooltip__body table td {
+    text-align: left;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+/* Arrow on tooltips */
+.tooltip:before {
+  content: "";
+  border-bottom: 10px solid #555;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  position: absolute;
+  right: 0;
+  left: 0;
+  width:1px;
+  margin: 0 auto;
+  top: -10px;
+}
+
+/* A basic implementaion of toggle on hover for tooltips */
+.tooltip {
+    /*display: none;*/
+}
+
+.radial-bar:hover ~ .tooltip {
+    display: block;
+}
+
+/* Basic responsive support */
+@media screen and (max-width: 740px) {
+
+    .radial-bars-widget__wrapper {
+        flex-direction: column;
+    }
+    .radial-bar {
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+    .tooltip {
+        bottom: -200px;
+    }
+    .radial-bar-container > .radial-bar__icon {
+        bottom: 22px;
+    }
+}
